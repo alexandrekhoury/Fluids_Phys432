@@ -30,7 +30,7 @@ nsize=1000
 
 #defining the intial density as a gaussian
 x=np.arange(0,nsize)
-f1=gaussian(x,nsize//2,nsize//10)*1+1
+f1=gaussian(x,nsize//2,nsize//10)*0.2+1
 f1_temp=np.zeros(nsize)
 
 f2=np.zeros(nsize)
@@ -54,7 +54,6 @@ Jm2=np.zeros(nsize-1)
 # plots 
 
 x=np.arange(0,nsize)
-plt.clf()
 plt.ion()
 
 fig, axes = plt.subplots(1,2)
@@ -64,7 +63,7 @@ x1, = axes[0].plot(f1)
 x2, = axes[1].plot(u)
 plt.ylim(0,4)
 x1.set_ydata(f1)
-plt.ylim(-40,40)
+plt.ylim(-np.max(u)*1.2,np.max(u)*1.2)
 x2.set_ydata(u)
 
 fig.canvas.draw()
@@ -144,6 +143,7 @@ for t in range (0,tmax):
     
         
         x1.set_ydata(f1)
+        plt.ylim(-np.max(u)*1.2,np.max(u)*1.2)
         x2.set_ydata(u)
         
         fig.canvas.draw()
